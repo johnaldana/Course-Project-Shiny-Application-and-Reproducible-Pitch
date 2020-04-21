@@ -1,0 +1,74 @@
+---
+title: "App Sensory Analysis Bean to Bar Chocolate"
+author: "Johnnery Aldana"
+date: "21/4/2020"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Objective
+
+This Aplication have like objetive help in the test sensory analysis "Bean to Bar" chocolates.
+
+"Bean to Bar" chocolates are chocolates made with fine aroma cacao. This cacao represents just 5% of world production and is produced in very few places. 
+
+"Bean to Bar" chocolates are similar to high-end wines and have unique flavors depending on the origin of the beans. Venezuela is the country with the largest variety of cocoa with fine aroma. The famous porcelain cocoa, Chuao, Ocumare, Patanemo, Caruao among many others, located on the map below.
+
+```{r}
+knitr::include_graphics("CACAO_VENEZUELA.png", dpi = 100)
+```
+
+
+## Sensory Analysis
+
+Sensory analysis is the use of the 5 senses (smell, sight, hearing, touch and taste) to evaluate, detect and scrutinize the different features that characterize chocolate.
+
+In the sensory evaluation of the attributes of flavor and aroma, the descriptors of the chocolate are taken into account, which are: Sweet, Salty, Bitter, Astringent, Dried_Fruits, Citrus, Species, etc.
+
+When tasting a chocolate our senses are activated and together with our memories of flavors and aroma we can determine the descriptors of chocolate. Then we can assign a value to each descriptor and build a sensory profile diagram. As we show below.
+
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+library(ggiraph)
+library(ggiraphExtra)
+
+a <- 5; b <- 6;c <- 6;d <- 7;e <- 8;f <- 6;g <- 8
+
+df<- c(a,b,c,d, e, f,g);dim(df)<-c(1,7)
+
+colnames(df) <-  c("Sweet", "Salty", "Bitter", "Astringent", "Dried_Fruits", "Citrus", "Species")
+
+df <- as.data.frame(df)
+
+ggRadar(df, aes(x=c(Sweet, Salty, Bitter, Astringent, Dried_Fruits, Citrus, Species)), rescale = FALSE, ylim = c(0,10), colour = "Green")
+```
+
+
+## App Sensory Analysis Bean to Bar Chocolate
+
+
+Our application helps interactively and in a very simple way with the sensory analysis process allowing the taster to fill in the values on the left side and generating the sensory profile diagram on the right side. As can be seen in the following figure.
+
+```{r}
+
+knitr::include_graphics("APP_Test_Sensory.jpg", dpi = 100)
+
+```
+
+
+## App Sensory Analysis Bean to Bar Chocolate
+
+We can also evaluate the defects in the flavor that the chocolate may present, such as: Metal, Moisture, powder, over-fermented, etc.
+
+```{r}
+knitr::include_graphics("App_Test_Sensory_2.jpg", dpi = 100)
+```
+
+Thanks so much
